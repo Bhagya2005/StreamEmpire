@@ -1,0 +1,107 @@
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>StremEmpire | Chat-Platform</title>
+//     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+//     <style>
+//         body {
+//             font-family: Arial, sans-serif;
+//             background-color: #f4f4f4;
+//             margin: 0;
+//         }
+//         #logo {
+//             text-align: center;
+//             margin: 20px;
+//         }
+//         #main {
+//             display: flex;
+//             justify-content: space-between;
+//             margin: 20px;
+//         }
+//         #room-user, #message-container {
+//             background: #fff;
+//             padding: 15px;
+//             border: 1px solid #ddd;
+//             margin: 10px;
+//             width: 45%;
+//         }
+//         #messages {
+//             height: 300px;
+//             overflow-y: scroll;
+//             border: 1px solid #ccc;
+//             padding: 10px;
+//             margin-bottom: 10px;
+//         }
+//         #type-message {
+//             display: flex;
+//         }
+//         #text {
+//             flex: 1;
+//             padding: 10px;
+//         }
+//         #send {
+//             background: #28a745;
+//             color: white;
+//             padding: 10px;
+//             cursor: pointer;
+//             margin-left: 10px;
+//         }
+//     </style>
+//     <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+// </head>
+// <body>
+//     <div id="logo">
+//         <img src="./images/logo.png" alt="Logo">
+//     </div>
+//     <div>
+//         <h1 class="text-center">Welcome to StremEmpire Chat Platform</h1>
+//     </div>
+//     <div id="main">
+//         <div id="room-user">
+//             <div id="room">
+//                 <div id="room-name">Room-ID: <span id="room-id">256</span></div>
+//             </div>
+//             <div id="user-online">
+//                 <div id="user-heading">Members</div>
+//                 <div id="members">
+//                     <!-- All the room members -->
+//                 </div>
+//             </div>
+//             <div id="leave" style="cursor: pointer;">Leave Room</div>
+//         </div>
+
+//         <div id="message-container">
+//             <div id="msgs">Messages</div>
+//             <div id="messages">
+//                 <!-- All the messages -->
+//             </div>
+//             <div id="type-message">
+//                 <input type="text" id="text" placeholder="Type Your message" required />
+//                 <div id="send">Send</div>
+//             </div>
+//         </div>
+//     </div>
+
+//     <script>
+//         const socket = io('http://localhost:3000'); // Change this to your server URL
+
+//         document.getElementById('send').onclick = function() {
+//             const messageInput = document.getElementById('text');
+//             const message = messageInput.value;
+//             if (message) {
+//                 socket.emit('chat message', message);
+//                 messageInput.value = ''; // Clear input
+//             }
+//         };
+
+//         socket.on('chat message', function(msg) {
+//             const messagesDiv = document.getElementById('messages');
+//             const newMessage = document.createElement('div');
+//             newMessage.textContent = msg;
+//             messagesDiv.appendChild(newMessage);
+//         });
+//     </script>
+// </body>
+// </html>
